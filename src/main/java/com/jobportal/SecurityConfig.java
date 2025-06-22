@@ -41,14 +41,14 @@ public class SecurityConfig {
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
-     @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://job-portal-vavo.onrender.com")); // your frontend domain
+        configuration.setAllowedOriginPatterns(List.of("https://job-portal-vavo.onrender.com")); // or use *.onrender.com
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true); // needed if using cookies or Authorization headers
-
+        configuration.setAllowCredentials(true);
+    
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
