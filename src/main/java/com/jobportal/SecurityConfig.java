@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .cors() // ✅ Enable CORS
                 .and()
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // ✅ Allow OPTIONS requests for preflight
+                       .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
                         .requestMatchers("/auth/login", "/users/register", "/users/verifyOtp/**", "/users/sendOtp/**", "/users/changePassword").permitAll()
                         .anyRequest().authenticated()
                 )
